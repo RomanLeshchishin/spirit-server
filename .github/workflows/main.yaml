@@ -36,3 +36,18 @@ jobs:
         run: |
           docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
           docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
+
+      - name: Deploy Serverless Container
+        id: deploy-sls-container
+        uses: yc-actions/yc-sls-container-deploy@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          container-name: crpjh9ii5ii94r1osalb/yc-cr-github-action
+          folder-id: b1gltiv4op8l3g7jsg21
+          revision-service-account-id: aje8ls78l309ak52mp6g
+          revision-cores: 1
+          revision-memory: 512Mb
+          revision-core-fraction: 100
+          revision-concurrency: 8
+          revision-image-url: cr.yandex/crpjh9ii5ii94r1osalb/yc-cr-github-action:${{ github.sha }}
+          revision-execution-timeout: 10
