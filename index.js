@@ -11,6 +11,9 @@ app.use(express.json())
 app.use(cors())
 app.use('/auth', authRouter)
 app.use('/user', signUpRouter)
+app.get('/', (req, res) => {
+    res.send('Hello')
+})
 
 const start = async () => {
     try {
