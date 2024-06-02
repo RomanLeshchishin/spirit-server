@@ -42,7 +42,7 @@ jobs:
         uses: yc-actions/yc-sls-container-deploy@v1
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-          container-name: crpjh9ii5ii94r1osalb/yc-cr-github-action
+          container-name: yc-cr-github-action
           folder-id: b1gltiv4op8l3g7jsg21
           revision-service-account-id: aje8ls78l309ak52mp6g
           revision-cores: 1
